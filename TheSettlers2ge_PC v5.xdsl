@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network1" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="Farm__Grain_">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<probabilities>0.11667 0.86666 0.01667</probabilities>
+		</cpt>
+		<cpt id="Well__Water_">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<probabilities>0.0167 0.7416 0.2417</probabilities>
+		</cpt>
+		<cpt id="Pig_Farm__Pigs_">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>Farm__Grain_ Well__Water_</parents>
+			<probabilities>0.8 0.175 0.025 0.7 0.237 0.063 0.325 0.35 0.325 0.2 0.737 0.063 0.002 0.996 0.002 0.007 0.969 0.024 0.325 0.35 0.325 0.063 0.238 0.699 0.004 0.025 0.971</probabilities>
+		</cpt>
+		<cpt id="Slaughterhouse__Food_">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>Pig_Farm__Pigs_</parents>
+			<probabilities>0.533 0.45 0.017 0.002 0.91 0.08799999999999999 0.003 0.09 0.907</probabilities>
+		</cpt>
+		<cpt id="Mill__Flour_">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>Farm__Grain_</parents>
+			<probabilities>0.866 0.117 0.017 0.002 0.996 0.002 0.004 0.023 0.973</probabilities>
+		</cpt>
+		<cpt id="Bakery__Food_">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>Mill__Flour_ Well__Water_</parents>
+			<probabilities>0.8 0.175 0.025 0.2 0.737 0.063 0.325 0.35 0.325 0.2 0.737 0.063 0.002 0.973 0.025 0.008 0.5570000000000001 0.435 0.325 0.35 0.325 0.063 0.737 0.2 0.004 0.025 0.971</probabilities>
+		</cpt>
+		<cpt id="Coal_Mine">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>Slaughterhouse__Food_ Bakery__Food_</parents>
+			<probabilities>0.3 0.175 0.525 0.4 0.475 0.125 0.325 0.35 0.325 0.4 0.475 0.125 0.043 0.353 0.604 0.125 0.475 0.4 0.325 0.35 0.325 0.125 0.475 0.4 0.002 0.276 0.722</probabilities>
+		</cpt>
+		<cpt id="Iron_Mine">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>Slaughterhouse__Food_ Bakery__Food_</parents>
+			<probabilities>0.8 0.175 0.025 0.4 0.475 0.125 0.325 0.35 0.325 0.4 0.475 0.125 0.022 0.292 0.6860000000000001 0.125 0.475 0.4 0.325 0.35 0.325 0.125 0.475 0.4 0.002 0.015 0.983</probabilities>
+		</cpt>
+		<cpt id="Iron_Smelter__Steel_">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>Coal_Mine Iron_Mine</parents>
+			<probabilities>0.6 0.35 0.05 0.4 0.475 0.125 0.065 0.67 0.265 0.4 0.475 0.125 0.3 0.65 0.05 0.003 0.96 0.037 0.081 0.08799999999999999 0.831 0.005 0.441 0.554 0.002 0.374 0.624</probabilities>
+		</cpt>
+		<cpt id="Armory__Weapons_">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>Iron_Smelter__Steel_ Coal_Mine</parents>
+			<probabilities>0.6 0.35 0.05 0.35 0.369 0.281 0.163 0.674 0.163 0.7 0.237 0.063 0.364 0.605 0.031 0.063 0.737 0.2 0.325 0.35 0.325 0.204 0.416 0.38 0.022 0.028 0.95</probabilities>
+		</cpt>
+		<cpt id="Gold_Mine">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>Slaughterhouse__Food_ Bakery__Food_</parents>
+			<probabilities>0.8 0.175 0.025 0.4 0.475 0.125 0.325 0.35 0.325 0.4 0.475 0.125 0.043 0.486 0.471 0.125 0.475 0.4 0.325 0.35 0.325 0.125 0.475 0.4 0.046 0.32 0.634</probabilities>
+		</cpt>
+		<cpt id="Mint__Coin_">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>Coal_Mine Gold_Mine</parents>
+			<probabilities>0.6 0.35 0.05 0.133 0.492 0.375 0.442 0.45 0.108 0.4 0.475 0.125 0.482 0.388 0.13 0.405 0.499 0.096 0.332 0.193 0.475 0.08400000000000001 0.148 0.768 0.059 0.21 0.731</probabilities>
+		</cpt>
+		<cpt id="Brewery__Beer_">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>Farm__Grain_ Well__Water_</parents>
+			<probabilities>0.8 0.175 0.025 0.6990000000000001 0.238 0.063 0.325 0.35 0.325 0.2 0.7370000000000002 0.063 0.002 0.996 0.002 0.007 0.969 0.024 0.325 0.35 0.325 0.063 0.238 0.6990000000000001 0.004 0.025 0.971</probabilities>
+		</cpt>
+		<cpt id="Military_Strength">
+			<state id="High" />
+			<state id="Medium" />
+			<state id="Low" />
+			<parents>Mint__Coin_ Armory__Weapons_ Brewery__Beer_</parents>
+			<probabilities>0.6 0.35 0.05 0.8467 0.1433 0.01 0.2083 0.175 0.6167 0.4667 0.4333 0.1 0.4222 0.5678 0.01 0.2833 0.4334 0.2833 0.4167 0.35 0.2333 0.0944 0.8111999999999999 0.0944 0.2333 0.35 0.4167 0.4667 0.4333 0.1 0.3703 0.613 0.0167 0.1417 0.2167 0.6416000000000001 0.3333 0.5167 0.15 0.0111 0.8111 0.1778 0.15 0.5167 0.3333 0.2833 0.4334 0.2833 0.0187 0.3146 0.6667 0.1 0.4333 0.4667 0.4167 0.35 0.2333 0.07089999999999996 0.3583 0.5708 0.1167 0.175 0.7083 0.2833 0.4334 0.2833 0.0187 0.0646 0.9167 0.05 0.2167 0.7333 0.07779999999999999 0.1167 0.8055 0.0026 0.0114 0.986 0.004599999999999937 0.0318 0.9636</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.1.380.0" name="Static Network" faultnameformat="nodestate">
+			<node id="Farm__Grain_">
+				<name>Farm (Grain)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>530 55 647 116</position>
+				<comment>Cont Table Grain</comment>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="Well__Water_">
+				<name>Well (Water)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>800 57 927 124</position>
+				<comment>Cont Table Water</comment>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="Mill__Flour_">
+				<name>Mill (Flour)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>668 185 786 251</position>
+				<comment>Cont Table Mill</comment>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="Pig_Farm__Pigs_">
+				<name>Pig Farm (Pigs)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>378 186 482 246</position>
+				<comment>Cont Table Pig Farm</comment>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="Bakery__Food_">
+				<name>Bakery (Food)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>797 321 923 394</position>
+				<comment>Cont Table Bakery</comment>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="Slaughterhouse__Food_">
+				<name>Slaughterhouse (Food)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>528 321 655 395</position>
+				<comment>Cont Table Slaughterhouse</comment>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="Coal_Mine">
+				<name>Coal Mine</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>682 458 807 521</position>
+				<comment>Cont Table Coal</comment>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="Iron_Mine">
+				<name>Iron Mine</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>459 459 589 518</position>
+				<comment>Cont Table Iron</comment>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="Gold_Mine">
+				<name>Gold Mine</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>916 459 1030 519</position>
+				<comment>Cont Table Gold</comment>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="Iron_Smelter__Steel_">
+				<name>Iron Smelter (Steel)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>580 582 724 655</position>
+				<comment>Cont Table Steel</comment>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="Mint__Coin_">
+				<name>Mint (Coin)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>810 584 935 659</position>
+				<comment>Cont Table Coin</comment>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="Armory__Weapons_">
+				<name>Armory (Weapons)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>678 707 811 786</position>
+				<comment>Cont Table Armory</comment>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="Military_Strength">
+				<name>Military Strength</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>998 777 1134 853</position>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="Brewery__Beer_">
+				<name>Brewery (Beer)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>998 191 1130 259</position>
+				<comment>Cont Table Pig Farm</comment>
+				<barchart active="true" width="128" height="108" />
+			</node>
+		</genie>
+	</extensions>
+</smile>
